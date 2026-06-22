@@ -75,42 +75,10 @@ const whyChooseUsData = [
 ];
 
 const teamMembers = [
-  {
-    name: "Ethan Caldwell",
-    role: "Founder & CEO",
-    experience: "McKinsey Strategist",
-    initials: "EC",
-    bio: "Former McKinsey consultant who pivoted to building tech. Ethan has helped 200+ companies restructure digital operations for measurable growth.",
-    tags: ["Strategy", "Growth"],
-    gradient: "from-[#4F46E5] to-[#6366f1]",
-  },
-  {
-    name: "Dr. Evelyn Vance",
-    role: "Chief Technology Officer",
-    experience: "Former AWS Architect",
-    initials: "EV",
-    bio: "14 years designing secure, cloud-native infrastructure at AWS. Evelyn leads engineering architecture across all enterprise client projects.",
-    tags: ["Cloud", "Architecture"],
-    gradient: "from-[#7C3AED] to-[#9333ea]",
-  },
-  {
-    name: "Marcus Thorne",
-    role: "Chief Marketing Officer",
-    experience: "$80M Organic Lead Gen",
-    initials: "MT",
-    bio: "Ran organic acquisition campaigns generating $80M+ in pipeline. Marcus specialises in technical SEO and performance-led media buying.",
-    tags: ["SEO", "Paid Media"],
-    gradient: "from-[#4F46E5] to-[#7C3AED]",
-  },
-  {
-    name: "Sophia Patel",
-    role: "Operations Director",
-    experience: "Agile Scrum Master",
-    initials: "SP",
-    bio: "Certified Scrum Master coordinating 40+ simultaneous client projects across time zones. Zero missed deadlines in three years running.",
-    tags: ["Agile", "Delivery"],
-    gradient: "from-[#6d28d9] to-[#4F46E5]",
-  },
+  { name: "Ethan Caldwell",   role: "Founder & CEO",          experience: "McKinsey Strategist",  initials: "EC" },
+  { name: "Dr. Evelyn Vance", role: "Chief Technology Officer", experience: "Former AWS Architect", initials: "EV" },
+  { name: "Marcus Thorne",    role: "Chief Marketing Officer",  experience: "$80M Organic Lead Gen", initials: "MT" },
+  { name: "Sophia Patel",     role: "Operations Director",      experience: "Agile Scrum Master",   initials: "SP" },
 ];
 
 const testimonials = [
@@ -157,77 +125,50 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════
           1. HERO
       ═══════════════════════════════════════ */}
-      <section className="relative min-h-[94vh] flex items-center overflow-hidden bg-white">
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-white">
 
-        {/* subtle grid */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: 'linear-gradient(rgba(79,70,229,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(79,70,229,0.035) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
+        {/* Backgrounds */}
+        <div className="absolute inset-0 tech-grid opacity-60 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-indigo-100/50 blur-[120px] -translate-y-1/3 translate-x-1/4 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-violet-100/40 blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
 
-        {/* blobs — kept soft, not overdone */}
-        <div className="absolute top-0 right-0 w-[640px] h-[640px] rounded-full bg-indigo-100/40 blur-[110px] -translate-y-1/3 translate-x-1/4 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[440px] h-[440px] rounded-full bg-violet-100/30 blur-[90px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
-
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 lg:pt-20 lg:pb-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 lg:pt-16 lg:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
             {/* LEFT */}
             <motion.div
-              className="space-y-9 max-w-xl"
+              className="space-y-8 max-w-xl"
               initial="hidden"
               animate="visible"
-              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+              variants={{ visible: { transition: { staggerChildren: 0.11 } } }}
             >
-              {/* Eyebrow — no pill, just a clean inline label */}
-              <motion.div
-                variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}
-                className="flex items-center gap-3"
-              >
-                <span className="block h-px w-8 bg-[#4F46E5]" />
-                <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#4F46E5]">
-                  Full-Service Digital Agency
-                </span>
+              {/* Eyebrow */}
+              <motion.div variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-[#4F46E5] text-[11px] font-semibold uppercase tracking-widest">
+               
+                </div>
               </motion.div>
 
-              {/* Headline — let the type do the work */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-                <h1 className="text-[2.6rem] sm:text-[3.2rem] xl:text-[3.6rem] font-extrabold leading-[1.06] tracking-[-0.025em] text-slate-900 font-heading">
-                  We Build Digital<br />
-                  <span
-                    className="font-heading"
-                    style={{
-                      background: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }}
-                  >
-                    Experiences That
-                  </span>
-                  <br />
+              {/* Headline */}
+              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="space-y-1">
+                <h1 className="text-[2.75rem] sm:text-5xl xl:text-[3.5rem] font-extrabold leading-[1.08] tracking-[-0.02em] text-slate-900 font-heading">
+                  We Build Digital
+                </h1>
+                <h1 className="text-[2.75rem] sm:text-5xl xl:text-[3.5rem] font-extrabold leading-[1.08] tracking-[-0.02em] font-heading">
+                  <span className="gradient-text">Experiences That</span>
+                </h1>
+                <h1 className="text-[2.75rem] sm:text-5xl xl:text-[3.5rem] font-extrabold leading-[1.08] tracking-[-0.02em] text-slate-900 font-heading">
                   Drive Real Growth
                 </h1>
               </motion.div>
 
-              {/* Subtext */}
-              <motion.p
-                variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}
-                className="text-[15.5px] text-slate-500 leading-[1.75] max-w-[420px]"
-              >
-                Custom websites, Shopify stores, software, AI automation and SEO — all under one roof.
-                Trusted by{' '}
-                <strong className="text-slate-700 font-semibold">150+ clients</strong>{' '}
-                across India, US, UK and Singapore.
+              {/* Sub */}
+              <motion.p variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }} className="text-[16px] text-slate-500 leading-[1.7] max-w-[440px]">
+                Custom websites, software, Shopify stores, AI automation and SEO — all under one roof. Trusted by <strong className="text-slate-700 font-semibold">150+ clients</strong> across India, US, UK and Singapore.
               </motion.p>
 
               {/* CTAs */}
-              <motion.div
-                variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}
-                className="flex flex-wrap gap-3"
-              >
+              <motion.div variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }} className="flex flex-wrap gap-3">
                 <Link
                   href="#consultation"
                   className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#4F46E5] hover:bg-[#4338CA] text-white font-semibold text-sm shadow-lg shadow-indigo-300/40 hover:shadow-indigo-400/50 hover:-translate-y-0.5 transition-all duration-200"
@@ -243,11 +184,8 @@ export default function HomePage() {
                 </Link>
               </motion.div>
 
-              {/* Social proof row */}
-              <motion.div
-                variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
-                className="flex items-center gap-4 pt-1"
-              >
+              {/* Social proof */}
+              <motion.div variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }} className="flex items-center gap-4 pt-1">
                 <div className="flex -space-x-2">
                   {['SH', 'RV', 'ER', 'MT'].map((i) => (
                     <div key={i} className="h-8 w-8 rounded-full bg-gradient-to-br from-indigo-400 to-violet-500 border-2 border-white flex items-center justify-center text-[9px] font-bold text-white shadow-sm">
@@ -260,7 +198,7 @@ export default function HomePage() {
                     {[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />)}
                   </div>
                   <div className="text-[12px] text-slate-500 mt-0.5">
-                    <span className="font-semibold text-slate-700">4.9 / 5</span> from 150+ clients
+                    <span className="font-semibold text-slate-700">4.9/5</span> from 150+ clients
                   </div>
                 </div>
               </motion.div>
@@ -269,21 +207,21 @@ export default function HomePage() {
             {/* RIGHT — hero image */}
             <motion.div
               className="relative lg:pl-6"
-              initial={{ opacity: 0, x: 36 }}
+              initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.75, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate-200/80 aspect-[4/3] border border-slate-100/80">
                 <Image src="/corporate_hero.png" alt="WebGrow team building digital products" fill priority className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/20 via-transparent to-transparent" />
               </div>
 
-              {/* Floating result card — top left */}
+              {/* Floating cards */}
               <motion.div
                 className="absolute -top-5 -left-2 sm:-left-8 bg-white rounded-2xl shadow-xl border border-slate-100 px-4 py-3 hidden sm:flex items-center gap-3"
-                initial={{ opacity: 0, y: -14 }}
+                initial={{ opacity: 0, y: -16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.7, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="h-9 w-9 rounded-xl bg-indigo-50 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="h-5 w-5 text-[#4F46E5]" />
@@ -294,34 +232,55 @@ export default function HomePage() {
                 </div>
               </motion.div>
 
-              {/* Floating result card — bottom right */}
               <motion.div
                 className="absolute -bottom-5 -right-2 sm:-right-8 bg-white rounded-2xl shadow-xl border border-slate-100 px-4 py-3 hidden sm:flex items-center gap-3"
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.85, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.85, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="h-9 w-9 rounded-xl bg-violet-50 flex items-center justify-center shrink-0">
                   <Bot className="h-5 w-5 text-[#7C3AED]" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-800">160 hrs saved / mo</div>
+                  <div className="text-sm font-bold text-slate-800">160 hrs saved/mo</div>
                   <div className="text-[11px] text-slate-400">AI Automation</div>
                 </div>
               </motion.div>
 
-              {/* Live badge */}
               <motion.div
                 className="absolute top-1/2 -right-2 sm:-right-6 -translate-y-1/2 bg-white rounded-2xl shadow-xl border border-slate-100 px-3 py-2.5 hidden lg:flex items-center gap-2"
-                initial={{ opacity: 0, x: 14 }}
+                initial={{ opacity: 0, x: 16 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-[12px] font-semibold text-slate-700">500+ Projects Delivered</span>
               </motion.div>
             </motion.div>
           </div>
+
+          {/* Stat bar */}
+          <motion.div
+            className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-px bg-slate-100 rounded-2xl overflow-hidden border border-slate-100 shadow-sm"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
+            {[
+              { val: 500, suffix: '+', label: 'Projects Delivered', sub: 'Since 2018' },
+              { val: 150, suffix: '+', label: 'Global Clients',     sub: 'India · US · UK · SG' },
+              { val: 98,  suffix: '%', label: 'Satisfaction Rate',  sub: 'Avg. 4.9 / 5 stars' },
+              { val: 5,   suffix: '+', label: 'Years Experience',   sub: 'Full-service agency' },
+            ].map((s) => (
+              <div key={s.label} className="bg-white px-6 py-5 text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#4F46E5] font-heading">
+                  <Counter value={s.val} suffix={s.suffix} />
+                </div>
+                <div className="text-[13px] font-semibold text-slate-700 mt-0.5">{s.label}</div>
+                <div className="text-[11px] text-slate-400 mt-0.5">{s.sub}</div>
+              </div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Scroll hint */}
@@ -535,75 +494,34 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════
-          7. Team — Meet Our Experts
+          7. Team
       ═══════════════════════════════════════ */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* Header */}
-          <FadeUp className="max-w-2xl mb-16">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="block h-px w-8 bg-[#4F46E5]" />
-              <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#4F46E5]">
-                Leadership
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 font-heading">
-              Meet the people behind<br />every project
-            </h2>
-            <p className="text-sm text-slate-500 mt-4 leading-relaxed max-w-lg">
-              Our leadership team brings together deep expertise in engineering, marketing, and operations — people who have done it before at scale.
-            </p>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <FadeUp className="text-center max-w-3xl mx-auto space-y-4">
+            <Pill icon={<Users className="h-3.5 w-3.5" />} label="Leadership" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 font-heading">Meet Our Experts</h2>
+            <p className="text-sm text-slate-500">Experienced architects, designers, and growth managers delivering digital products.</p>
           </FadeUp>
-
-          {/* Cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {teamMembers.map((member, idx) => (
-              <FadeUp key={idx} delay={idx * 0.09}>
-                <div className="group relative bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
-
-                  {/* Top colour strip */}
-                  <div className={`h-1 w-full bg-gradient-to-r ${member.gradient}`} />
-
-                  <div className="p-6 flex flex-col gap-5 flex-1">
-
-                    {/* Avatar + name */}
-                    <div className="flex items-center gap-4">
-                      <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${member.gradient} flex items-center justify-center text-white font-extrabold text-base font-heading shadow-sm shrink-0`}>
-                        {member.initials}
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-bold text-slate-900 font-heading leading-snug">{member.name}</h3>
-                        <div className="text-[10px] font-bold uppercase tracking-widest text-[#4F46E5] mt-0.5">{member.role}</div>
-                      </div>
+              <FadeUp key={idx} delay={idx * 0.08}>
+                <div className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex flex-col text-center">
+                  <div className="p-6 space-y-3">
+                    <div className="h-14 w-14 mx-auto rounded-2xl bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] flex items-center justify-center text-white font-bold text-base font-heading shadow-md shadow-indigo-100">
+                      {member.initials}
                     </div>
-
-                    {/* Divider */}
-                    <div className="h-px w-full bg-slate-100" />
-
-                    {/* Short bio */}
-                    <p className="text-[12px] text-slate-500 leading-[1.7] flex-1">
-                      {member.bio}
-                    </p>
-
-                    {/* Skill tags */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {member.tags.map((tag) => (
-                        <span key={tag} className="px-2.5 py-1 rounded-md bg-indigo-50 text-[10px] font-semibold text-[#4F46E5] uppercase tracking-wider">
-                          {tag}
-                        </span>
-                      ))}
+                    <div>
+                      <h3 className="text-sm font-bold text-slate-900 font-heading">{member.name}</h3>
+                      <div className="text-[10px] text-[#4F46E5] font-semibold uppercase tracking-wider mt-1">{member.role}</div>
+                      <div className="text-[9px] text-slate-400 uppercase tracking-widest mt-0.5">{member.experience}</div>
                     </div>
                   </div>
-
-                  {/* Footer */}
-                  <div className="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[10px] text-slate-400 font-medium">{member.experience}</span>
+                  <div className="p-3 bg-slate-50 border-t border-slate-100 flex justify-center">
                     <a href="#linkedin" className="text-slate-300 hover:text-[#4F46E5] transition-colors">
                       <Linkedin className="h-4 w-4" />
                     </a>
                   </div>
-
                 </div>
               </FadeUp>
             ))}
