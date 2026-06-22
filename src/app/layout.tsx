@@ -60,17 +60,17 @@ export default function RootLayout({
     "name": "WebGrow Technologies",
     "image": "https://webgrowtech.com/my_logo.png",
     "url": "https://webgrowtech.com",
-    "telephone": "+1-415-555-2690",
-    "priceRange": "$$$$",
+    "telephone": "+91-91620-00000",
+    "priceRange": "₹₹₹",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "One Market Plaza, Suite 2200",
-      "addressLocality": "San Francisco",
-      "addressRegion": "CA",
-      "postalCode": "94105",
-      "addressCountry": "US"
+      "streetAddress": "Bandra Kurla Complex, G Block",
+      "addressLocality": "Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "400051",
+      "addressCountry": "IN"
     },
-    "tagline": "Engineering Digital Growth",
+    "tagline": "Helping Businesses Grow Through Technology & Marketing",
     "sameAs": [
       "https://linkedin.com",
       "https://twitter.com",
@@ -92,7 +92,7 @@ export default function RootLayout({
           <Navbar />
           
           {/* Main Content Area */}
-          <main className="flex-grow pt-[68px] pb-12">
+          <main className="flex-grow pt-[68px]">
             {children}
           </main>
 

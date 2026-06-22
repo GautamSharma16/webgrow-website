@@ -624,9 +624,9 @@ export const blogData: BlogPost[] = [
     slug: "ai-agents-future",
     category: "AI",
     author: {
-      name: "Devin Miller",
+      name: "Arjun Mehta",
       role: "Lead AI Solutions Architect",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80"
+      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=80"
     },
     date: "June 15, 2026",
     readTime: "6 Min Read",
@@ -679,9 +679,9 @@ With these techniques, you get static site speeds with fully dynamic application
     slug: "seo-strategy-2026",
     category: "SEO",
     author: {
-      name: "Marcus Thorne",
+      name: "Vikram Desai",
       role: "Director of Performance Marketing",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80"
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=80"
     },
     date: "April 12, 2026",
     readTime: "5 Min Read",
@@ -784,5 +784,210 @@ export const resourcesData: ResourceItem[] = [
     desc: "A detailed engineering report demonstrating the operational ROI of deploying autonomous LLM agents inside customer support and dispatch workflows.",
     downloadUrl: "#ai-whitepaper-download",
     fileSize: "14.2 MB"
+  }
+];
+
+// ─── Team & Company Data ───────────────────────────────────────────────────
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  experience: string;
+  specialization: string;
+  bio: string;
+  photo: string;
+  linkedin: string;
+}
+
+export const teamData: TeamMember[] = [
+  {
+    id: "founder",
+    name: "Rahul Sharma",
+    role: "Founder & CEO",
+    experience: "12+ Years",
+    specialization: "Business Strategy & Client Relations",
+    bio: "Started WebGrow in 2019 from a small office in Pune with a vision to bring enterprise-grade technology to Indian SMEs. Previously led digital transformation projects at Wipro and Infosys.",
+    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
+    linkedin: "https://linkedin.com/in/rahul-sharma-webgrow"
+  },
+  {
+    id: "tech-lead",
+    name: "Arjun Mehta",
+    role: "Technical Lead",
+    experience: "10+ Years",
+    specialization: "Full-Stack Architecture & DevOps",
+    bio: "IIT Bombay alumnus with deep expertise in Next.js, cloud infrastructure, and scalable backend systems. Has architected platforms handling 2M+ daily requests.",
+    photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80",
+    linkedin: "https://linkedin.com/in/arjun-mehta-webgrow"
+  },
+  {
+    id: "ux-lead",
+    name: "Priya Nair",
+    role: "UI/UX Lead",
+    experience: "8+ Years",
+    specialization: "Product Design & Design Systems",
+    bio: "Former design lead at Flipkart. Creates conversion-focused interfaces that balance aesthetics with usability. Passionate about accessible, inclusive design.",
+    photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
+    linkedin: "https://linkedin.com/in/priya-nair-webgrow"
+  },
+  {
+    id: "marketing-director",
+    name: "Vikram Desai",
+    role: "Marketing Director",
+    experience: "9+ Years",
+    specialization: "SEO, Performance Marketing & Analytics",
+    bio: "Scaled organic traffic for 40+ Indian brands. Expert in technical SEO, Google Ads, and data-driven campaign optimization across B2B and D2C verticals.",
+    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80",
+    linkedin: "https://linkedin.com/in/vikram-desai-webgrow"
+  }
+];
+
+export interface TrustMetric {
+  label: string;
+  value: string;
+  sub?: string;
+}
+
+export const trustMetrics: TrustMetric[] = [
+  { label: "Projects Delivered", value: "500+", sub: "Across 12 industries" },
+  { label: "Happy Clients", value: "150+", sub: "India, US, UK, UAE" },
+  { label: "Success Rate", value: "98%", sub: "On-time delivery" },
+  { label: "Years Experience", value: "5+", sub: "Since 2019" },
+];
+
+export const clientReviews = [
+  {
+    text: "WebGrow rebuilt our entire patient booking system. Online appointments jumped 185% in four months. Their Mumbai team understood our compliance needs perfectly.",
+    author: "Dr. Ananya Krishnan",
+    company: "MediCore Healthcare, Bengaluru",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80"
+  },
+  {
+    text: "The Shopify headless store they built loads in under a second. Our conversion rate grew 34% and AOV increased by ₹1,200. Best investment we made this year.",
+    author: "Rajesh Kapoor",
+    company: "Kapoor Textiles, Delhi",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80"
+  },
+  {
+    text: "Their SEO team took us from page 5 to page 1 for our core keywords in 8 months. Organic leads increased 245%. Transparent reporting every week.",
+    author: "Sneha Reddy",
+    company: "PropNex Realty, Hyderabad",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=80"
+  }
+];
+
+export const industriesServed = [
+  "Healthcare", "E-commerce", "Real Estate", "Education",
+  "Manufacturing", "Logistics", "Finance", "Hospitality",
+  "SaaS", "Retail", "Automotive", "Legal"
+];
+
+export const awardsAndCerts = [
+  { title: "Google Partner", desc: "Certified Google Ads & Analytics partner" },
+  { title: "Shopify Expert", desc: "Official Shopify development partner" },
+  { title: "ISO 27001", desc: "Information security management certified" },
+  { title: "Clutch Top Agency", desc: "Rated 4.9/5 on Clutch.co" },
+  { title: "AWS Partner", desc: "Amazon Web Services consulting partner" },
+  { title: "Meta Business Partner", desc: "Verified Meta advertising partner" },
+];
+
+export const partnerLogos = [
+  "Tata Digital", "Reliance Retail", "HDFC Bank", "Infosys",
+  "Wipro", "Mahindra", "Aditya Birla Group", "ICICI Bank",
+  "L&T Infotech", "Bajaj Finserv"
+];
+
+export const companyTimeline = [
+  { year: "2019", title: "Founded in Pune", desc: "Rahul Sharma starts WebGrow with 3 developers and a shared office space." },
+  { year: "2020", title: "First 50 Clients", desc: "Crossed 50 SME clients across Maharashtra and Karnataka during the pandemic digital shift." },
+  { year: "2021", title: "Mumbai HQ Opens", desc: "Moved to Bandra Kurla Complex with a 25-person team. Launched SEO division." },
+  { year: "2022", title: "500 Projects Milestone", desc: "Delivered 500th project. Expanded into AI automation and Shopify headless commerce." },
+  { year: "2023", title: "International Clients", desc: "Started serving clients in US, UK, and UAE. Team grew to 40+ professionals." },
+  { year: "2024", title: "Enterprise Partnerships", desc: "Became certified Google, Shopify, and AWS partner. 150+ active clients." },
+];
+
+export interface EnhancedCaseStudy extends CaseStudyItem {
+  challenge: string;
+  solution: string;
+  results: string[];
+  image: string;
+}
+
+export const enhancedCaseStudies: EnhancedCaseStudy[] = [
+  {
+    ...caseStudiesData[0],
+    challenge: "MediCore's legacy booking portal had 68% mobile drop-off and zero SEO visibility for doctor profiles.",
+    solution: "Built a Next.js patient portal with instant schedule sync, schema markup for 200+ doctor profiles, and WhatsApp booking integration.",
+    results: ["+250% Online Leads", "+180% Organic Traffic", "+40% Revenue"],
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&auto=format&fit=crop&q=80"
+  },
+  {
+    ...caseStudiesData[1],
+    challenge: "Velo Logistics spent 160+ hours monthly on manual dispatch routing for 120 delivery vans.",
+    solution: "Deployed AI routing agents integrated with Google Maps API and ERP, automating 84% of dispatch decisions.",
+    results: ["-84% Manual Hours", "+99.4% On-Time Delivery", "₹1.2Cr Annual Savings"],
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80"
+  },
+  {
+    ...caseStudiesData[2],
+    challenge: "Luxe Thread's WordPress store crashed during flash sales with 4.8s load times and 62% cart abandonment.",
+    solution: "Migrated to headless Shopify + Next.js with CDN caching, optimized checkout, and Meta/Google pixel integration.",
+    results: ["+280% Traffic", "+190% Revenue", "+34% Conversion Rate"],
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop&q=80"
+  }
+];
+
+export const homeServices = [
+  {
+    id: "web-development",
+    icon: "code",
+    title: "Web Development",
+    shortDesc: "High-performance websites built with Next.js and React, optimized for speed, SEO, and conversions.",
+    benefits: ["Core Web Vitals optimized", "Custom CMS integration", "Mobile-first responsive design"],
+    href: "/services?tab=web-development"
+  },
+  {
+    id: "shopify",
+    icon: "shopping",
+    title: "Shopify Development",
+    shortDesc: "Custom Shopify themes and headless storefronts designed to maximize sales and average order value.",
+    benefits: ["Headless architecture", "Checkout optimization", "ERP & inventory sync"],
+    href: "/services?tab=shopify-development"
+  },
+  {
+    id: "seo",
+    icon: "search",
+    title: "SEO",
+    shortDesc: "Technical SEO and content strategy to dominate search rankings and drive qualified organic traffic.",
+    benefits: ["Keyword research & mapping", "Schema markup", "Monthly ranking reports"],
+    href: "/services?tab=seo"
+  },
+  {
+    id: "marketing",
+    icon: "megaphone",
+    title: "Digital Marketing",
+    shortDesc: "Google Ads, Meta campaigns, and analytics-driven marketing that delivers measurable ROI.",
+    benefits: ["Campaign management", "Conversion tracking", "A/B testing & optimization"],
+    href: "/services?tab=marketing"
+  },
+  {
+    id: "ai",
+    icon: "bot",
+    title: "AI Automation",
+    shortDesc: "Custom AI agents and chatbots that automate workflows, support, and business operations.",
+    benefits: ["RAG-based chatbots", "Workflow automation", "CRM & Slack integration"],
+    href: "/services?tab=ai-agents"
+  },
+  {
+    id: "mobile",
+    icon: "smartphone",
+    title: "Mobile Apps",
+    shortDesc: "Cross-platform iOS and Android apps with offline support, push notifications, and smooth UX.",
+    benefits: ["React Native & Flutter", "App Store submission", "Backend API integration"],
+    href: "/services?tab=mobile-app-development"
   }
 ];

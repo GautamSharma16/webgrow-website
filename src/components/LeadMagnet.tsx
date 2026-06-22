@@ -70,7 +70,7 @@ export default function LeadMagnet() {
             className="pointer-events-auto max-w-sm w-full glass border border-card-border rounded-xl shadow-2xl p-5 overflow-hidden relative"
           >
             {/* Top decorative glow */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-blue to-brand-purple" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#153D77] to-[#D4AF37]" />
 
             {/* Close Button */}
             <button
@@ -82,7 +82,7 @@ export default function LeadMagnet() {
 
             {submitted ? (
               <div className="text-center py-4 space-y-3">
-                <div className="mx-auto h-10 w-10 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center">
+                <div className="mx-auto h-10 w-10 rounded-full bg-[#0B1F3A]/10 text-[#153D77] flex items-center justify-center">
                   <Download className="h-5 w-5 animate-bounce" />
                 </div>
                 <h4 className="text-sm font-bold text-foreground">Download Ready!</h4>
@@ -92,14 +92,14 @@ export default function LeadMagnet() {
                 <a
                   href="#download-playbook-pdf"
                   onClick={handleClose}
-                  className="inline-block px-4 py-1.5 rounded-lg bg-brand-blue hover:bg-brand-blue/90 text-white text-[10px] font-semibold transition-all cursor-pointer"
+                  className="inline-block px-4 py-1.5 rounded-lg bg-[#0B1F3A] hover:bg-[#153D77] text-white text-[10px] font-semibold transition-all cursor-pointer"
                 >
                   Download Instant Copy
                 </a>
               </div>
             ) : (
               <div className="space-y-3.5">
-                <div className="flex items-center space-x-2 text-brand-blue">
+                <div className="flex items-center space-x-2 text-[#153D77]">
                   <BookOpen className="h-4 w-4" />
                   <span className="text-[10px] font-bold uppercase tracking-wider">Free Ebook</span>
                 </div>
@@ -128,7 +128,7 @@ export default function LeadMagnet() {
                   )}
                   <button
                     type="submit"
-                    className="w-full py-1.5 rounded-lg bg-gradient-to-r from-brand-blue to-brand-purple text-white text-[10px] font-semibold shadow transition-all cursor-pointer"
+                    className="w-full py-1.5 rounded-lg bg-[#0B1F3A] hover:bg-[#153D77] text-white text-[10px] font-semibold shadow transition-all cursor-pointer"
                   >
                     Send PDF Blueprint &rarr;
                   </button>

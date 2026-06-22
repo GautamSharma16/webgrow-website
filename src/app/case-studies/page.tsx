@@ -1,223 +1,179 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, CartesianGrid } from 'recharts';
-import { TrendingUp, Users, DollarSign, Percent, ShieldAlert, Award, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { caseStudiesData } from '@/data/siteData';
+import Image from 'next/image';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, CartesianGrid } from 'recharts';
+import { TrendingUp, Users, DollarSign, Percent, Award, ArrowRight, Target, Lightbulb } from 'lucide-react';
+import { enhancedCaseStudies } from '@/data/siteData';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function CaseStudiesPage() {
-  const [activeCase, setActiveCase] = useState<string>('medicore-case');
+  const [activeCase, setActiveCase] = useState(enhancedCaseStudies[0].id);
   const [mounted, setMounted] = useState(false);
 
-  // Safeguard against SSR hydration mismatch with browser-only Recharts canvas
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => { setMounted(true); }, []);
 
-  const currentCase = caseStudiesData.find(c => c.id === activeCase) || caseStudiesData[0];
+  const currentCase = enhancedCaseStudies.find(c => c.id === activeCase) || enhancedCaseStudies[0];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 relative">
-      {/* Background Decor */}
-      <div className="absolute top-20 right-10 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-brand-purple/5 rounded-full blur-3xl pointer-events-none" />
-
+    <div className="overflow-hidden">
       {/* Header */}
-      <section className="text-center space-y-4 max-w-3xl mx-auto">
-        <div className="inline-flex items-center space-x-2 bg-brand-purple/10 border border-brand-purple/20 px-3 py-1 rounded-full text-brand-purple text-xs font-semibold">
-          <Award className="h-4 w-4" />
-          <span>Case Studies & ROI Reports</span>
-        </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-foreground via-brand-blue to-brand-purple bg-clip-text text-transparent">
-          Enterprise Results Verified
-        </h1>
-        <p className="text-xs sm:text-sm text-brand-muted leading-relaxed">
-          Review actual monthly growth metrics spanning organic visitors, inbound SQL leads, and subscription revenues across completed client projects.
-        </p>
-      </section>
-
-      {/* Case Study Switcher Triggers */}
-      <section className="flex flex-wrap justify-center gap-2">
-        {caseStudiesData.map((cs) => (
-          <button
-            key={cs.id}
-            onClick={() => setActiveCase(cs.id)}
-            className={`px-4.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-              activeCase === cs.id
-                ? 'bg-gradient-to-r from-brand-blue to-brand-purple text-white shadow-md'
-                : 'glass border border-card-border text-foreground hover:bg-card-border'
-            }`}
-          >
-            {cs.client} ({cs.industry})
-          </button>
-        ))}
-      </section>
-
-      {/* Main Panel: KPI Cards and Responsive Recharts Grid */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        {/* KPI Cards (Left Side) */}
-        <div className="lg:col-span-4 space-y-4">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-foreground px-1">
-            Growth KPIs: {currentCase.client}
-          </h3>
-          
-          <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
-            
-            <div className="p-4 rounded-xl glass border border-card-border flex items-center space-x-3.5 shadow-sm">
-              <div className="p-2 bg-brand-blue/10 text-brand-blue rounded">
-                <TrendingUp className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-[10px] text-brand-muted font-semibold uppercase leading-none">Traffic Growth</div>
-                <div className="text-lg font-extrabold text-foreground mt-1.5">+{currentCase.metrics.trafficGrowth}%</div>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl glass border border-card-border flex items-center space-x-3.5 shadow-sm">
-              <div className="p-2 bg-brand-purple/10 text-brand-purple rounded">
-                <Users className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-[10px] text-brand-muted font-semibold uppercase leading-none">New Leads</div>
-                <div className="text-lg font-extrabold text-foreground mt-1.5">+{currentCase.metrics.leadsGenerated}</div>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl glass border border-card-border flex items-center space-x-3.5 shadow-sm">
-              <div className="p-2 bg-emerald-500/10 text-emerald-500 rounded">
-                <DollarSign className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-[10px] text-brand-muted font-semibold uppercase leading-none">Revenue Growth</div>
-                <div className="text-lg font-extrabold text-foreground mt-1.5">+{currentCase.metrics.revenueIncrease}%</div>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-xl glass border border-card-border flex items-center space-x-3.5 shadow-sm">
-              <div className="p-2 bg-cyan-500/10 text-cyan-400 rounded">
-                <Percent className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-[10px] text-brand-muted font-semibold uppercase leading-none">Conversion Rate</div>
-                <div className="text-lg font-extrabold text-foreground mt-1.5">{currentCase.metrics.conversionRate}%</div>
-              </div>
-            </div>
-
-          </div>
-
-          <div className="p-4.5 rounded-xl bg-brand-blue/5 border border-brand-blue/20 text-center">
-            <span className="text-[10px] font-bold text-brand-muted uppercase tracking-wider block">Campaign ROI</span>
-            <span className="text-2xl font-extrabold text-brand-blue block mt-1">{currentCase.metrics.marketingRoi}</span>
-          </div>
-        </div>
-
-        {/* Dynamic Recharts Charts Area (Right Side) */}
-        <div className="lg:col-span-8 space-y-6">
-          <div className="glass border border-card-border p-6 rounded-2xl shadow-xl space-y-6">
-            <div className="flex justify-between items-center border-b border-card-border pb-4">
-              <div>
-                <h2 className="text-sm font-bold text-foreground">Monthly Growth Trajectory</h2>
-                <span className="text-[10px] text-brand-muted">Relative performance values starting at baseline 100</span>
-              </div>
-            </div>
-
-            {mounted ? (
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart
-                    data={currentCase.chartData}
-                    margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
-                  >
-                    <defs>
-                      <linearGradient id="colorTraffic" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                        <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
-                      </linearGradient>
-                      <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#a855f7" stopOpacity={0.3}/>
-                        <stop offset="95%" stopColor="#a855f7" stopOpacity={0}/>
-                      </linearGradient>
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                    <XAxis dataKey="name" stroke="#94a3b8" fontSize={9} />
-                    <YAxis stroke="#94a3b8" fontSize={9} />
-                    <Tooltip 
-                      contentStyle={{ 
-                        background: 'rgba(15, 23, 42, 0.95)', 
-                        borderColor: 'rgba(255, 255, 255, 0.1)',
-                        borderRadius: '12px',
-                        color: '#f3f4f6',
-                        fontSize: '11px'
-                      }} 
-                    />
-                    <Area type="monotone" dataKey="Traffic" stroke="#3b82f6" fillOpacity={1} fill="url(#colorTraffic)" strokeWidth={2} name="Traffic Volume" />
-                    <Area type="monotone" dataKey="Revenue" stroke="#a855f7" fillOpacity={1} fill="url(#colorRevenue)" strokeWidth={2} name="Revenue Trajectory" />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
-            ) : (
-              <div className="h-80 flex items-center justify-center text-xs text-brand-muted">
-                Initialising charting system canvas...
-              </div>
-            )}
-          </div>
-
-          {/* Secondary Lead volume bar chart */}
-          <div className="glass border border-card-border p-6 rounded-2xl shadow-xl space-y-6">
-            <h3 className="text-sm font-bold text-foreground">Monthly Inbound Lead Generation</h3>
-            {mounted ? (
-              <div className="h-64 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart
-                    data={currentCase.chartData}
-                    margin={{ top: 10, right: 10, left: -25, bottom: 0 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                    <XAxis dataKey="name" stroke="#94a3b8" fontSize={9} />
-                    <YAxis stroke="#94a3b8" fontSize={9} />
-                    <Tooltip
-                      contentStyle={{ 
-                        background: 'rgba(15, 23, 42, 0.95)', 
-                        borderColor: 'rgba(255, 255, 255, 0.1)',
-                        borderRadius: '12px',
-                        color: '#f3f4f6',
-                        fontSize: '11px'
-                      }} 
-                    />
-                    <Bar dataKey="Leads" fill="#06b6d4" radius={[4, 4, 0, 0]} name="SQL Leads Captured" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            ) : (
-              <div className="h-64 flex items-center justify-center text-xs text-brand-muted">
-                Initialising lead generation charts...
-              </div>
-            )}
-          </div>
-        </div>
-
-      </section>
-
-      {/* Footer Scoping Link */}
-      <section className="text-center bg-card/25 p-8 rounded-2xl border border-card-border max-w-4xl mx-auto space-y-4">
-        <h3 className="text-lg font-bold text-foreground">Ready to Get Verified ROI Reports?</h3>
-        <p className="text-xs text-brand-muted leading-relaxed">
-          Book a strategy session with Ethan Caldwell and our solutions consultants to map out traffic growth objectives and database APIs scoping.
-        </p>
-        <div className="pt-2">
-          <Link
-            href="/contact?case=scoping"
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-brand-blue to-brand-purple text-white text-xs font-bold hover:scale-102 transition-all inline-flex items-center space-x-1.5 cursor-pointer"
-          >
-            <span>Book Strategy Session</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
+      <section className="hero-enterprise py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <ScrollReveal>
+            <div className="section-badge mx-auto"><Award className="h-3.5 w-3.5" /> Case Studies</div>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0B1F3A] font-heading">Verified Results for Real Clients</h1>
+            <p className="text-[15px] text-[#6b7280] max-w-2xl mx-auto leading-relaxed">
+              Detailed breakdowns of how we helped businesses across India achieve measurable growth through technology and marketing.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
+      {/* Case Study Cards */}
+      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {enhancedCaseStudies.map((study, idx) => (
+            <ScrollReveal key={study.id} delay={idx * 80}>
+              <button
+                onClick={() => setActiveCase(study.id)}
+                className={`w-full text-left rounded-2xl overflow-hidden border transition-all cursor-pointer ${
+                  activeCase === study.id
+                    ? 'border-[#D4AF37] shadow-lg ring-2 ring-[#D4AF37]/20'
+                    : 'border-gray-100 shadow-sm hover:shadow-md'
+                }`}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image src={study.image} alt={study.client} fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/80 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="text-[10px] uppercase font-bold text-[#D4AF37] tracking-wider">{study.industry}</span>
+                    <h3 className="text-lg font-bold text-white font-heading">{study.client}</h3>
+                  </div>
+                </div>
+                <div className="p-5 space-y-3 bg-white">
+                  <div className="flex flex-wrap gap-2">
+                    {study.results.map((r) => (
+                      <span key={r} className="px-2.5 py-1 rounded-full bg-[#0B1F3A]/5 text-[11px] font-bold text-[#153D77]">{r}</span>
+                    ))}
+                  </div>
+                </div>
+              </button>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* Active Case Detail */}
+        <ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Left — Challenge & Solution */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm space-y-4">
+                <div className="flex items-center gap-2 text-[#D4AF37]">
+                  <Target className="h-4 w-4" />
+                  <span className="text-xs font-bold uppercase tracking-wider">Challenge</span>
+                </div>
+                <p className="text-[14px] text-[#6b7280] leading-relaxed">{currentCase.challenge}</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm space-y-4">
+                <div className="flex items-center gap-2 text-[#153D77]">
+                  <Lightbulb className="h-4 w-4" />
+                  <span className="text-xs font-bold uppercase tracking-wider">Solution</span>
+                </div>
+                <p className="text-[14px] text-[#6b7280] leading-relaxed">{currentCase.solution}</p>
+              </div>
+
+              {/* KPI Cards */}
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: TrendingUp, label: 'Traffic Growth', value: `+${currentCase.metrics.trafficGrowth}%`, color: 'text-[#153D77]' },
+                  { icon: Users, label: 'Leads Generated', value: `+${currentCase.metrics.leadsGenerated}`, color: 'text-[#153D77]' },
+                  { icon: DollarSign, label: 'Revenue Increase', value: `+${currentCase.metrics.revenueIncrease}%`, color: 'text-emerald-600' },
+                  { icon: Percent, label: 'Conversion Rate', value: `${currentCase.metrics.conversionRate}%`, color: 'text-[#D4AF37]' },
+                ].map((kpi) => (
+                  <div key={kpi.label} className="p-4 rounded-xl bg-[#F8F9FA] border border-gray-100">
+                    <kpi.icon className={`h-4 w-4 ${kpi.color} mb-2`} />
+                    <div className="text-[10px] text-[#6b7280] font-semibold uppercase">{kpi.label}</div>
+                    <div className={`text-lg font-extrabold ${kpi.color} mt-1`}>{kpi.value}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-5 rounded-xl bg-[#0B1F3A] text-center">
+                <span className="text-[10px] font-bold text-white/50 uppercase tracking-wider">Campaign ROI</span>
+                <div className="text-3xl font-extrabold text-[#D4AF37] mt-1">{currentCase.metrics.marketingRoi}</div>
+              </div>
+            </div>
+
+            {/* Right — Charts */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                <h3 className="text-sm font-bold text-[#0B1F3A] mb-1">Monthly Growth Trajectory</h3>
+                <p className="text-[11px] text-[#6b7280] mb-4">Traffic & revenue indexed from baseline 100</p>
+                {mounted ? (
+                  <div className="h-72 w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={currentCase.chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                        <defs>
+                          <linearGradient id="colorTraffic" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#153D77" stopOpacity={0.2} />
+                            <stop offset="95%" stopColor="#153D77" stopOpacity={0} />
+                          </linearGradient>
+                          <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#D4AF37" stopOpacity={0.2} />
+                            <stop offset="95%" stopColor="#D4AF37" stopOpacity={0} />
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                        <XAxis dataKey="name" stroke="#94a3b8" fontSize={10} />
+                        <YAxis stroke="#94a3b8" fontSize={10} />
+                        <Tooltip contentStyle={{ background: '#0B1F3A', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff', fontSize: '12px' }} />
+                        <Area type="monotone" dataKey="Traffic" stroke="#153D77" fill="url(#colorTraffic)" strokeWidth={2} />
+                        <Area type="monotone" dataKey="Revenue" stroke="#D4AF37" fill="url(#colorRevenue)" strokeWidth={2} />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                ) : (
+                  <div className="h-72 flex items-center justify-center text-sm text-[#6b7280]">Loading chart...</div>
+                )}
+              </div>
+
+              <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                <h3 className="text-sm font-bold text-[#0B1F3A] mb-4">Monthly Lead Generation</h3>
+                {mounted ? (
+                  <div className="h-56 w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={currentCase.chartData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                        <XAxis dataKey="name" stroke="#94a3b8" fontSize={10} />
+                        <YAxis stroke="#94a3b8" fontSize={10} />
+                        <Tooltip contentStyle={{ background: '#0B1F3A', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff', fontSize: '12px' }} />
+                        <Bar dataKey="Leads" fill="#153D77" radius={[4, 4, 0, 0]} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                ) : (
+                  <div className="h-56 flex items-center justify-center text-sm text-[#6b7280]">Loading chart...</div>
+                )}
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* CTA */}
+        <ScrollReveal>
+          <div className="text-center p-10 rounded-2xl bg-[#0B1F3A] text-white max-w-3xl mx-auto space-y-4">
+            <h3 className="text-xl font-bold font-heading">Ready for Results Like These?</h3>
+            <p className="text-white/60 text-[14px] leading-relaxed">
+              Book a free consultation with Rahul Sharma and our solutions team to map your growth objectives.
+            </p>
+            <Link href="/contact?scoping=true" className="btn-gold inline-flex">
+              Book Free Consultation <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </ScrollReveal>
+      </section>
     </div>
   );
 }

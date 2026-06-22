@@ -149,7 +149,7 @@ export default function LiveChat() {
             className="pointer-events-auto w-80 sm:w-96 h-[480px] rounded-2xl glass border border-card-border shadow-2xl flex flex-col overflow-hidden mb-4"
           >
             {/* Header */}
-            <div className="px-4 py-3 bg-gradient-to-r from-brand-blue/80 to-brand-purple/80 backdrop-blur border-b border-card-border flex items-center justify-between text-white">
+            <div className="px-4 py-3 bg-[#0B1F3A] border-b border-white/10 flex items-center justify-between text-white">
               <div className="flex items-center space-x-2.5">
                 <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                 <div>
@@ -244,7 +244,7 @@ export default function LiveChat() {
       {/* Floating Trigger button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="pointer-events-auto p-4 rounded-full bg-gradient-to-tr from-brand-blue to-brand-purple text-white shadow-xl shadow-brand-blue/20 hover:scale-105 transition-all flex items-center justify-center cursor-pointer relative"
+        className="pointer-events-auto p-4 rounded-full bg-[#0B1F3A] text-white shadow-xl shadow-[#0B1F3A]/20 hover:scale-105 transition-all flex items-center justify-center cursor-pointer relative"
         aria-label="Open Chat"
       >
         <span className="absolute -top-1 -right-1 flex h-3 w-3">
